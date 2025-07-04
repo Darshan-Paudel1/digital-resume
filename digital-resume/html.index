@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Name - Digital Resume</title>
+  <style>
+    :root {
+      --primary: #0a66c2;
+      --secondary: #004182;
+      --light: #f4f4f4;
+      --dark: #222;
+      --accent: #eaeaea;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--dark);
+      background: var(--light);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    header img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 2.2em;
+    }
+    header p {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+    nav {
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style: none;
+      max-width: 1000px;
+      margin: auto;
+    }
+    nav ul li {
+      margin: 0;
+    }
+    nav ul li a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      background: var(--accent);
+      color: var(--primary);
+    }
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 50px 20px;
+    }
+    section h2 {
+      font-size: 1.8em;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .skill {
+      background: #fff;
+      border-radius: 6px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .skill h3 {
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+    .bar {
+      background: #eee;
+      border-radius: 20px;
+      height: 10px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      background: var(--primary);
+      height: 10px;
+      width: 0;
+      transition: width 1s ease-in-out;
+    }
+    /* Timeline */
+    .timeline {
+      border-left: 3px solid var(--primary);
+      padding-left: 20px;
+      position: relative;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--primary);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -12px;
+      top: 5px;
+      width: 15px;
+      height: 15px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+    /* Portfolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .project {
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    .project:hover {
+      transform: translateY(-5px);
+    }
+    .project img {
+      width: 100%;
+      display: block;
+    }
+    .project-content {
+      padding: 15px;
+    }
+    .project-content h3 {
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+    .project-content a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 500;
+    }
+    /* Contact */
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: grid;
+      gap: 15px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-family: inherit;
+      font-size: 1em;
+    }
+    form button {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px;
+      border: none;
+      font-size: 1em;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background: var(--secondary);
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+      padding: 30px 20px;
+    }
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://via.placeholder.com/130" alt="Profile Photo">
+    <h1>Your Name</h1>
+    <p>Front-End Developer | Passionate about Clean Code and UX</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about" class="active">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello! I'm Your Name, a web developer dedicated to crafting modern, responsive, and user-centered websites. With a strong focus on HTML, CSS, and JavaScript, I bring design concepts to life while ensuring a seamless user experience.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill">
+        <h3>HTML</h3>
+        <div class="bar"><div class="bar-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill">
+        <h3>CSS</h3>
+        <div class="bar"><div class="bar-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill">
+        <h3>JavaScript</h3>
+        <div class="bar"><div class="bar-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill">
+        <h3>Problem Solving</h3>
+        <div class="bar"><div class="bar-fill" style="width:75%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Education & Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Bachelor of IT - XYZ University</h3>
+        <p>2020 - 2023</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Front-End Developer Intern - ABC Corp</h3>
+        <p>Summer 2022</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio-grid">
+      <div class="project">
+        <img src="https://via.placeholder.com/400x250" alt="Project 1">
+        <div class="project-content">
+          <h3>Responsive Website</h3>
+          <p>A clean, mobile-friendly website built with HTML, CSS, and JavaScript.</p>
+          <a href="#">View Project</a>
+        </div>
+      </div>
+      <div class="project">
+        <img src="https://via.placeholder.com/400x250" alt="Project 2">
+        <div class="project-content">
+          <h3>Portfolio Platform</h3>
+          <p>A personal portfolio site showcasing work and achievements.</p>
+          <a href="#">View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+    <p>LinkedIn: <a href="#">Your LinkedIn</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Your Name. All rights reserved.
+  </footer>
+
+  <script>
+    // Smooth scroll and active link highlight
+    const links = document.querySelectorAll("nav ul li a");
+    const sections = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+      links.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // Animate skill bars when in view
+    const skillBars = document.querySelectorAll(".bar-fill");
+    window.addEventListener("scroll", () => {
+      skillBars.forEach(bar => {
+        const barTop = bar.getBoundingClientRect().top;
+        if (barTop < window.innerHeight - 50) {
+          bar.style.width = bar.style.width;
+        }
+      });
+    });
+
+    // Simple form validation
+    document.getElementById("contactForm").addEventListener("submit", e => {
+      e.preventDefault();
+      alert("Thank you! Your message has been sent.");
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
